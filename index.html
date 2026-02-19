@@ -5,45 +5,47 @@
   <title>Catálogo de Filmes</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Catálogo de filmes fictício desenvolvido em HTML, CSS e JavaScript para portfólio.">
-
+  <meta name="description" content="Catálogo de filmes fictício para portfólio">
 </head>
 
 <body>
 
-  <header class="header">
-    <h1 class="logo">Catálogo de Filmes</h1>
+<header class="header">
+  <h1 class="logo">Catálogo de Filmes</h1>
 
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><a href="#">Início</a></li>
-        <li class="nav-item"><a href="#">Filmes</a></li>
-        <li class="nav-item"><a href="#">Séries</a></li>
-      </ul>
-    </nav>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item"><a href="#">Início</a></li>
+      <li class="nav-item"><a href="#">Filmes</a></li>
+      <li class="nav-item"><a href="#">Séries</a></li>
+    </ul>
+  </nav>
 
+  <div class="search-box">
     <input 
-  type="text" 
-  class="search-input" 
-  placeholder="Buscar filmes"
-  aria-label="Buscar filmes no catálogo"
->
+      type="text" 
+      id="searchInput" 
+      placeholder="Buscar filme..."
+      class="search-input"
+    >
+    <button class="search-button">
+  🔍
+</button>
 
-  </header>
+  </div>
+</header>
 
-  <main class="main">
-    <section class="section">
-      <h2 class="section-title">Filmes em destaque</h2>
+<main class="main">
+  <section class="section">
+    <h2 class="section-title">Filmes em destaque</h2>
+    <div class="movies-grid" id="moviesGrid"></div>
+  </section>
+</main>
 
-      <!-- JS VAI CRIAR OS CARDS AQUI -->
-      <div class="movies-grid" id="moviesGrid"></div>
-    </section>
-  </main>
+<footer class="footer">
+  <p class="footer-text">Projeto desenvolvido para portfólio</p>
+</footer>
 
-  <footer class="footer">
-    <p class="footer-text">Projeto desenvolvido para portfólio</p>
-  </footer>
-
-  <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
