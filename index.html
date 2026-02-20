@@ -9,16 +9,19 @@
 </head>
 
 <body>
+<div id="loader">
+  <div class="spinner"></div>
+</div>
 
 <header class="header">
   <h1 class="logo">Catálogo de Filmes</h1>
 
   <nav class="nav">
     <ul class="nav-list">
-      <li class="nav-item"><a href="#">Início</a></li>
-      <li class="nav-item"><a href="#">Filmes</a></li>
-      <li class="nav-item"><a href="#">Séries</a></li>
-    </ul>
+  <li><button class="filter-btn active" data-type="all">Todos</button></li>
+  <li><button class="filter-btn" data-type="movie">Filmes</button></li>
+  <li><button class="filter-btn" data-type="series">Séries</button></li>
+</ul>
   </nav>
 
   <div class="search-box">
@@ -28,8 +31,16 @@
       placeholder="Buscar filme..."
       class="search-input"
     >
-    <button class="search-button">
-  🔍
+    <button class="search-btn" aria-label="Buscar">
+  <span class="icon-search"></span>
+  <div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+
+    <img id="modalImage" alt="">
+    <h2 id="modalTitle"></h2>
+  </div>
+</div>
 </button>
 
   </div>
