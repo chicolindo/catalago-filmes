@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -8,9 +9,12 @@
 body {
   background: #141414;
   color: #fff;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
 }
 
-/* Header */
+/* ================= HEADER ================= */
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -29,16 +33,22 @@ body {
   list-style: none;
 }
 
-.nav-item a {
+.filter-btn {
+  background: none;
+  border: none;
   color: #fff;
-  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s;
 }
 
-.nav-item a:hover {
+.filter-btn:hover,
+.filter-btn.active {
   color: #e50914;
 }
 
-/* Search */
+/* ================= SEARCH ================= */
+
 .search-box {
   display: flex;
   align-items: center;
@@ -62,91 +72,23 @@ body {
 }
 
 .search-btn {
-  background: transparent;     /* sem fundo */
+  background: transparent;
   border: none;
   cursor: pointer;
-
-  font-size: 18px;
-  color: #b3b3b3;              /* cinza moderno */
-
+  color: rgba(255,255,255,0.6);
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  transition: 
-    color 0.25s ease,
-    transform 0.25s ease;
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .search-btn:hover {
-  color: #e50914;              /* vermelho só no hover */
+  color: #e50914;
   transform: scale(1.15);
 }
 
-.search-btn:active {
-  transform: scale(1.05);
-}
-
-
-/* Main */
-.main {
-  padding: 30px 40px;
-}
-
-.section-title {
-  margin-bottom: 20px;
-}
-
-.movies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 28px;
-}
-
-/* Card */
-.movie-card {
-  position: relative;
-  background: #111;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.movie-card:hover {
-  transform: scale(1.03);
-}
-
-/* Media */
-.movie-media {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-}
-
-.movie-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Title */
-.movie-title {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 14px;
-  text-align: center;
-  background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
-}
-
-/* Footer */
-.footer {
-  margin-top: 40px;
-  padding: 20px;
-  background: #000;
-  text-align: center;
-}
-
-/* Ícone da lupa (CSS puro) */
+/* Ícone da lupa */
 .icon-search {
   width: 16px;
   height: 16px;
@@ -166,54 +108,111 @@ body {
   transform: rotate(45deg);
 }
 
-/* Botão da lupa */
-.search-btn {
-  background: transparent;
-  border: none;
+/* ================= MAIN ================= */
+
+.main {
+  padding: 30px 40px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ================= CARD ================= */
+
+.movie-card {
+  position: relative;
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
 
-  color: rgba(255,255,255,0.6);
-  padding: 5px;
+.movie-card:hover {
+  transform: scale(1.04);
+}
 
+/* Overlay fade */
+.movie-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.movie-card:hover::after {
+  opacity: 1;
+}
+
+/* MEDIA */
+.movie-media {
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  transition: 
-    color 0.25s ease,
-    transform 0.25s ease;
+  aspect-ratio: 3 / 2;
 }
 
-.search-btn:hover {
-  color: #e50914;
-  transform: scale(1.15);
+.movie-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.4s ease;
 }
 
-.filter-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-  transition: color 0.2s;
+.movie-card:hover .movie-image {
+  filter: brightness(1.1);
 }
 
-.filter-btn:hover,
-.filter-btn.active {
-  color: #e50914;
-}
-body {
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
+/* TITLE */
+.movie-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 14px;
+  text-align: center;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    transparent
+  );
+  font-size: 15px;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+.movie-card:hover .movie-title {
+  transform: translateY(-4px);
+  opacity: 1;
 }
 
-/* Loader */
+/* ================= FOOTER ================= */
+
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: #000;
+  text-align: center;
+}
+
+/* ================= LOADER ================= */
+
 #loader {
   position: fixed;
   inset: 0;
@@ -224,7 +223,6 @@ body {
   z-index: 9999;
 }
 
-/* Spinner */
 .spinner {
   width: 48px;
   height: 48px;
@@ -240,19 +238,12 @@ body {
   }
 }
 
-/* Fade-out */
 #loader.hide {
   animation: fadeOut 0.6s ease forwards;
 }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
+/* ================= MODAL ================= */
 
-/* Modal fundo */
 .modal {
   position: fixed;
   inset: 0;
@@ -266,13 +257,11 @@ body {
   z-index: 9999;
 }
 
-/* Modal ativo */
 .modal.show {
   opacity: 1;
   pointer-events: all;
 }
 
-/* Conteúdo */
 .modal-content {
   background: #111;
   border-radius: 10px;
@@ -289,12 +278,10 @@ body {
   margin-bottom: 12px;
 }
 
-/* Título */
 .modal-content h2 {
   font-size: 20px;
 }
 
-/* Botão fechar */
 .modal-close {
   position: absolute;
   top: 20px;
@@ -302,6 +289,19 @@ body {
   font-size: 28px;
   cursor: pointer;
   color: #fff;
+}
+
+/* ================= ANIMAÇÕES ================= */
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 @keyframes zoomIn {
@@ -313,4 +313,61 @@ body {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+/* ================= CARROSSEL ================= */
+
+.carousel {
+  position: relative;
+}
+
+/* Linha horizontal */
+.movies-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+/* Remove scrollbar feio */
+.movies-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.movies-row::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+}
+
+/* Cada card no carrossel */
+.movies-row .movie-card {
+  flex: 0 0 260px; /* largura fixa estilo Netflix */
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: #fff;
+  font-size: 40px;
+  width: 50px;
+  height: 100px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.85);
+}
+
+.carousel-btn.left {
+  left: 0;
+}
+
+.carousel-btn.right {
+  right: 0;
 }

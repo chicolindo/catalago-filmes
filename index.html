@@ -3,56 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <title>Catálogo de Filmes</title>
-  <link rel="stylesheet" href="css/style.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Catálogo de filmes fictício para portfólio">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
+<!-- LOADER -->
 <div id="loader">
   <div class="spinner"></div>
 </div>
 
+<!-- HEADER -->
 <header class="header">
   <h1 class="logo">Catálogo de Filmes</h1>
 
   <nav class="nav">
     <ul class="nav-list">
-  <li><button class="filter-btn active" data-type="all">Todos</button></li>
-  <li><button class="filter-btn" data-type="movie">Filmes</button></li>
-  <li><button class="filter-btn" data-type="series">Séries</button></li>
-</ul>
+      <li><button class="filter-btn active" data-type="all">Todos</button></li>
+      <li><button class="filter-btn" data-type="movie">Filmes</button></li>
+      <li><button class="filter-btn" data-type="series">Séries</button></li>
+    </ul>
   </nav>
 
   <div class="search-box">
-    <input 
-      type="text" 
-      id="searchInput" 
+    <input
+      type="text"
+      id="searchInput"
       placeholder="Buscar filme..."
       class="search-input"
     >
+
     <button class="search-btn" aria-label="Buscar">
-  <span class="icon-search"></span>
-  <div id="modal" class="modal">
+      <span class="icon-search"></span>
+    </button>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main">
+  <section class="section">
+    <h2 class="section-title">Filmes em destaque</h2>
+
+    <!-- CARROSSEL -->
+    <div class="carousel">
+      <button class="carousel-btn left">‹</button>
+
+      <div class="movies-row" id="moviesGrid">
+        <!-- cards gerados via JS -->
+      </div>
+
+      <button class="carousel-btn right">›</button>
+    </div>
+  </section>
+</main>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
   <div class="modal-content">
     <span class="modal-close">&times;</span>
-
     <img id="modalImage" alt="">
     <h2 id="modalTitle"></h2>
   </div>
 </div>
-</button>
 
-  </div>
-</header>
-
-<main class="main">
-  <section class="section">
-    <h2 class="section-title">Filmes em destaque</h2>
-    <div class="movies-grid" id="moviesGrid"></div>
-  </section>
-</main>
-
+<!-- FOOTER -->
 <footer class="footer">
   <p class="footer-text">Projeto desenvolvido para portfólio</p>
 </footer>

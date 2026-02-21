@@ -94,3 +94,15 @@ window.addEventListener("load", () => {
    INIT
 ========================= */
 renderCatalog(catalog);
+
+const row = document.querySelector(".movies-row");
+const btnLeft = document.querySelector(".carousel-btn.left");
+const btnRight = document.querySelector(".carousel-btn.right");
+
+btnLeft.addEventListener("click", () => {
+  row.scrollLeft -= 300;
+});
+
+btnRight.addEventListener("click", () => {
+  row.scrollLeft += 300;
+});
