@@ -40,7 +40,6 @@ function renderCatalog(items) {
       <h3 class="movie-title">${movie.title}</h3>
     `;
 
-    // ABRIR MODAL
     card.addEventListener("click", () => {
       modalImage.src = movie.image;
       modalTitle.textContent = movie.title;
@@ -59,9 +58,7 @@ closeModal.addEventListener("click", () => {
 });
 
 modal.addEventListener("click", e => {
-  if (e.target === modal) {
-    modal.classList.remove("show");
-  }
+  if (e.target === modal) modal.classList.remove("show");
 });
 
 /* =========================
@@ -69,11 +66,9 @@ modal.addEventListener("click", e => {
 ========================= */
 searchInput.addEventListener("input", () => {
   const value = searchInput.value.toLowerCase();
-
-  const filtered = catalog.filter(movie =>
-    movie.title.toLowerCase().includes(value)
+  const filtered = catalog.filter(item =>
+    item.title.toLowerCase().includes(value)
   );
-
   renderCatalog(filtered);
 });
 
@@ -82,27 +77,32 @@ searchInput.addEventListener("input", () => {
 ========================= */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
-
   if (loader) {
-    setTimeout(() => {
-      loader.classList.add("hide");
-    }, 1100);
+    setTimeout(() => loader.classList.add("hide"), 1000);
   }
+});
+
+/* =========================
+   FILTROS (FILMES / SÉRIES)
+========================= */
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const type = btn.dataset.type;
+
+    if (type === "all") {
+      renderCatalog(catalog);
+    } else {
+      renderCatalog(catalog.filter(item => item.type === type));
+    }
+  });
 });
 
 /* =========================
    INIT
 ========================= */
 renderCatalog(catalog);
-
-const row = document.querySelector(".movies-row");
-const btnLeft = document.querySelector(".carousel-btn.left");
-const btnRight = document.querySelector(".carousel-btn.right");
-
-btnLeft.addEventListener("click", () => {
-  row.scrollLeft -= 300;
-});
-
-btnRight.addEventListener("click", () => {
-  row.scrollLeft += 300;
-});
