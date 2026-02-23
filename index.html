@@ -12,76 +12,78 @@
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="spinner"></div>
-</div>
-
-<!-- HEADER -->
-<header class="header">
-  <h1 class="logo">Catálogo de Filmes</h1>
-
-  <nav class="nav">
-    <ul class="nav-list">
-      <li><button class="filter-btn active" data-type="all">Todos</button></li>
-      <li><button class="filter-btn" data-type="movie">Filmes</button></li>
-      <li><button class="filter-btn" data-type="series">Séries</button></li>
-    </ul>
-  </nav>
-
-  <div class="search-box">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Buscar filme..."
-      class="search-input"
-    >
-
-    <button class="search-btn" aria-label="Buscar">
-      <span class="icon-search"></span>
-    </button>
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="spinner"></div>
   </div>
-</header>
 
-<!-- MAIN -->
-<main class="main">
-  <section class="section">
-    <h2 class="section-title">Filmes em destaque</h2>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-container">
 
-    <!-- CARROSSEL -->
-    <div class="carousel">
-      <button class="carousel-btn left">‹</button>
+      <h1 class="logo">Catálogo de Filmes</h1>
 
-      <div class="movies-row" id="moviesGrid">
-        <!-- cards gerados via JS -->
+      <!-- FILTROS + BUSCA -->
+      <div class="header-center">
+
+        <nav class="nav">
+          <ul class="nav-list filter-group">
+            <li><button class="filter-btn active" data-type="all">Todos</button></li>
+            <li><button class="filter-btn" data-type="movie">Filmes</button></li>
+            <li><button class="filter-btn" data-type="series">Séries</button></li>
+          </ul>
+        </nav>
+
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Buscar filme..."
+          >
+        </div>
+
       </div>
-
-      <button class="carousel-btn right">›</button>
     </div>
-  </section>
-</main>
+  </header>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="modal-close">&times;</span>
-    <img id="modalImage" alt="">
-    <h2 id="modalTitle"></h2>
+  <!-- MAIN -->
+  <main class="main">
+
+    <section class="section">
+      <h2 class="section-title">Filmes & Séries</h2>
+
+      <!-- CARROSSEL -->
+      <div class="carousel">
+
+        <button class="carousel-btn left">‹</button>
+
+        <!-- GRID GERADO PELO JS -->
+        <div class="movies-row" id="moviesGrid">
+          <!-- JS insere os cards aqui -->
+        </div>
+
+        <button class="carousel-btn right">›</button>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL (ESTRUTURA CORRETA PRO JS) -->
+  <div id="modal" class="modal">
+    <div class="modal-content" id="modalContent">
+      <!-- JS injeta imagem / vídeo / sinopse aqui -->
+    </div>
   </div>
-</div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <p class="footer-text">Projeto desenvolvido para portfólio</p>
-</footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-text">Projeto desenvolvido para portfólio</p>
+  </footer>
 
-<section class="section">
-  <h2 class="section-title">Séries populares</h2>
-  <!-- mesmo carrossel -->
-</section>
+  <!-- SCRIPT -->
+  <script src="js/script.js" defer></script>
 
-<link rel="stylesheet" href="css/style.css">
-
-<script src="js/script.js" defer></script>
 </body>
 </html>
