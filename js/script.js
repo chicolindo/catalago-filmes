@@ -11,21 +11,21 @@ const catalog = [
   {
     title: "Batman: O Cavaleiro das Trevas",
     type: "movie",
-    image: "assets/img/batman.jpg",
+    image: "assets/images/batman-dark-night.jpeg",
     video: "assets/videos/The_Dark_Knight_Official_1080P.mp4",
     synopsis: "Com Gotham ameaçada pelo Coringa, Batman enfrenta o maior desafio moral de sua jornada."
   },
   {
     title: "Better Call Saul",
     type: "series",
-    image: "assets/img/better-call-saul.jpg",
+    image: "assets/images/better-call-saul.jpeg",
     video: "assets/videos/better_call_saul_1080p.mp4",
     synopsis: "Antes de se tornar Saul Goodman, Jimmy McGill tenta sobreviver no mundo jurídico."
   },
   {
     title: "Clube da Luta",
     type: "movie",
-    image: "assets/img/fight-club.jpg",
+    image: "assets/images/fight-club.jpeg",
     video: "assets/videos/fight_club_4k.mp4",
     synopsis: "Um homem entediado cria um clube secreto que rapidamente foge do controle."
   },
@@ -36,7 +36,7 @@ const catalog = [
   },
   {
     title: "Interestelar",
-    image: "assets/images/interestellar.jpeg",
+    image: "assets/images/interstellar.jpeg",
     type: "movie"
   },
   {
@@ -86,7 +86,9 @@ const catalog = [
 ========================= */
 const modal = document.getElementById("modal");
 const modalContent = document.querySelector(".modal-content");
-
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+});
 /* =========================
    RENDERIZA OS CARDS
 ========================= */
