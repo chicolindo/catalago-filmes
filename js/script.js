@@ -121,11 +121,16 @@ function renderCatalog(items) {
     card.className = "movie-card";
 
     card.innerHTML = `
-      <div class="movie-media">
-        <img src="${item.image}" class="movie-image" alt="${item.title}">
-      </div>
-      <h3 class="movie-title">${item.title}</h3>
-    `;
+  <div class="movie-media">
+    <img src="${item.image}" class="movie-image" alt="${item.title}">
+
+    <div class="movie-overlay">
+      <div class="play-btn">▶</div>
+    </div>
+  </div>
+
+  <h3 class="movie-title">${item.title}</h3>
+`;
 
     card.addEventListener("click", () => openModal(item));
 
