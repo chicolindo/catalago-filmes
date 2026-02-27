@@ -1,0 +1,23 @@
+{
+  "name": "catalogo-streaming",
+  "version": "1.0.0",
+  "description": "Projeto de catálogo de filmes desenvolvido para fins de estudo e portfólio.",
+  "homepage": "https://github.com/chicolindo/catalago-filmes#readme",
+  "bugs": {
+    "url": "https://github.com/chicolindo/catalago-filmes/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chicolindo/catalago-filmes.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
