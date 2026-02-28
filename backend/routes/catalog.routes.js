@@ -3,6 +3,8 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 
+const isAdmin = require("../middlewares/isAdmin");
+
 const dbPath = path.join(__dirname, "../data/catalog.json");
 
 function readDB() {
@@ -26,7 +28,7 @@ router.get("/", (req, res) => {
   res.json(catalog);
 });
 
-router.post("/", (req, res) => {
+router.post("/", isAdmin, (req, res) => {
   const catalog = readDB();
 
   const newItem = {
