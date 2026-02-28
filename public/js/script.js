@@ -11,9 +11,11 @@ const modalContent = document.querySelector(".modal-content");
 ========================= */
 let catalog = [];
 
-async function loadCatalog() {
+async function loadCatalog(type = "all", search = "") {
   try {
-    const response = await fetch("/api/catalog");
+    const response = await fetch(
+      `/api/catalog?type=${type}&search=${search}`
+    );
     catalog = await response.json();
     renderCatalog(catalog);
   } catch (error) {
@@ -87,12 +89,8 @@ function closeModal() {
 /* =========================
    BUSCA
 ========================= */
-searchInput.addEventListener("input", () => {
-  const value = searchInput.value.toLowerCase();
-  const filtered = catalog.filter(item =>
-    item.title.toLowerCase().includes(value)
-  );
-  renderCatalog(filtered);
+searchInput.addEventListener("input", (e) => {
+  loadCatalog("all", e.target.value);
 });
 
 /* =========================
@@ -106,12 +104,7 @@ filterButtons.forEach(btn => {
     btn.classList.add("active");
 
     const type = btn.dataset.type;
-    const filtered =
-      type === "all"
-        ? catalog
-        : catalog.filter(item => item.type === type);
-
-    renderCatalog(filtered);
+    loadCatalog(type, searchInput.value);
   });
 });
 
