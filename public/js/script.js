@@ -116,7 +116,45 @@ window.addEventListener("load", () => {
   setTimeout(() => loader.classList.add("hide"), 1100);
 });
 
+
 /* =========================
-   INIT
+   LOGIN
 ========================= */
-loadCatalog();
+const loginScreen = document.getElementById("loginScreen");
+const loginForm = document.getElementById("loginForm");
+const loginBtn = loginForm.querySelector(".login-btn");
+const loginError = document.getElementById("loginError");
+
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  loginBtn.classList.add("loading");
+  loginError.textContent = "";
+
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  setTimeout(async () => {
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (!res.ok) throw new Error("Invalid credentials");
+
+      // LOGIN OK
+      loginScreen.style.opacity = "0";
+      setTimeout(() => {
+        loginScreen.style.display = "none";
+        loadCatalog();
+      }, 400);
+
+    } catch (err) {
+      loginError.textContent = "Invalid username or password";
+    } finally {
+      loginBtn.classList.remove("loading");
+    }
+  }, 1000); // ⏳ 1000ms loading
+});

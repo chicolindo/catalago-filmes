@@ -12,6 +12,34 @@
 
 <body>
 
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="login-screen">
+  <form class="login-box" id="loginForm">
+    <h2 class="login-title">Admin Access</h2>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Username"
+      required
+    />
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+      required
+    />
+
+    <button type="submit" class="login-btn">
+      <span class="login-text">Login</span>
+      <span class="login-spinner"></span>
+    </button>
+
+    <p class="login-error" id="loginError"></p>
+  </form>
+</div>
+
   <!-- LOADER -->
   <div id="loader">
     <div class="spinner"></div>

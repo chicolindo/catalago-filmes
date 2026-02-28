@@ -303,3 +303,93 @@ backface-visibility: hidden;
   display: block;
   margin: 0 auto 16px;
 }
+
+/* =========================
+   LOGIN SCREEN
+========================= */
+.login-screen {
+  position: fixed;
+  inset: 0;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.login-box {
+  background: #0b0b0b;
+  padding: 40px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.6s ease;
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.login-box input {
+  background: rgba(255,255,255,0.06);
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.login-btn {
+  position: relative;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.login-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: none;
+  margin: auto;
+}
+
+.login-btn.loading .login-text {
+  display: none;
+}
+
+.login-btn.loading .login-spinner {
+  display: block;
+}
+
+.login-error {
+  color: #e50914;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
